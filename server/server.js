@@ -1,6 +1,8 @@
 //First of all: start a terminal in the mongo/bin directory w/
 //./mongod --dbpath ~/Documents/Corso-NodeJS-Udemy/mongo-data/
 //command
+require('./config/config');
+
 const _ = require('lodash');
 const {ObjectID} = require('mongodb');
 
@@ -14,7 +16,7 @@ var {User} = require('./models/user');
 
 var app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json()); //to send JSON to the Express app
 

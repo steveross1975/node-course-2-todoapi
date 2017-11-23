@@ -1,8 +1,8 @@
 const expect = require('expect');
 const request = require('supertest');
 
-var {mongoose} = require('./../db/mongoose');
 const {app} = require('./../server');
+var {mongoose} = require('./../db/mongoose');
 const Todo = mongoose.model('Todo');
 const {ObjectID} = require('mongodb')
 
