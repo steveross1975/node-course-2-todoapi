@@ -1,4 +1,6 @@
-//First of all: start a terminal in the mongo/bin directory w/
+//First of all:
+//modify the terminal window w/ printf '\e[8;90;100t'
+//then start a terminal in the mongo/bin directory w/
 //./mongod --dbpath ~/Documents/Corso-NodeJS-Udemy/mongo-data/
 //command
 require('./config/config');
@@ -123,6 +125,27 @@ app.post('/users', (req, res) => {
 app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
 });
+
+// POST /users/login {email, password}
+app.post('/users/login', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+
+  User.findByCredentials(body.email, body.password).then((user) => {
+    return user.generateAuthToken().then((token) => {
+      res.header('x-auth', token).send(user);
+    });
+  }).catch((e) => {
+    res.status(400).send();
+  });
+  // user.save().then(() => {
+  //   return user.generateAuthToken();
+  // }).then((token) => {
+  //   res.header('x-auth', token).send(user);
+  // }).catch((e) => {
+  //   res.status(400).send(e);
+  // });
+});
+
 
 app.listen(port, () => {
   console.log(`Started up at port ${port}`);
