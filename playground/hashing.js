@@ -2,7 +2,7 @@ const {SHA256} = require('crypto-js'); //module that gives access to password ha
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-var password = '123abc!';
+var password = 'userTwoPass';
 
 // bcrypt.genSalt(10, (err, salt) => {
 //   bcrypt.hash(password, salt, (err, hash) => {
@@ -10,7 +10,7 @@ var password = '123abc!';
 //   });
 // });
 
-var hashedPassword = '$2a$10$fowMvgM8Dc.38En3l1SKOelVJbMSO8c02s5W0asnRq1Ajybc5Qdl6';
+var hashedPassword = '$2a$10$gk73Ci0Yhpv5NguJDX8I1uiuGn8tKVGh.wynZHhjQ1N16lHUuciC2';
 
 bcrypt.compare(password, hashedPassword, (err, res) => {
   console.log(res);
