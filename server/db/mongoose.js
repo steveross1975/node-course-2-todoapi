@@ -5,8 +5,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   useMongoClient: true
 });
 
-// mongoose.createConnection(process.env.MONGODB_URI, {
-//   useMongoClient: true
-// });
+// mongoose.createConnection(process.env.MONGODB_URI);
 
 module.exports = {mongoose};
